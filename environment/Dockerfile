@@ -7,3 +7,12 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG GIT_ASKPASS
 ARG GIT_ACCESS_TOKEN
 COPY git-askpass /
+
+RUN conda install -y python=3.11 \
+    && conda clean -ya
+
+RUN apt-get update \
+    && apt-get install -y ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install git+https://github.com/AllenNeuralDynamics/aind-motion-energy.git@main
