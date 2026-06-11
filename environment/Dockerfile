@@ -12,4 +12,4 @@ RUN apt-get update \
     && apt-get install -y ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install matplotlib git+https://github.com/AllenNeuralDynamics/aind-motion-energy.git@main
+RUN pip install matplotlib git+https://github.com/AllenNeuralDynamics/aind-motion-energy.git@main  # 2026-06-10
