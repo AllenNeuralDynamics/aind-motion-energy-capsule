@@ -7,7 +7,7 @@ import numpy as np
 
 from aind_motion_energy import compute_motion_energy
 
-DATA_DIR = Path("/data")
+DATA_DIR = Path("/root/capsule/data")
 RESULTS_DIR = Path("/results")
 VIDEO_EXTENSIONS = {".mp4", ".avi", ".mkv", ".mov", ".mj2", ".tif", ".tiff"}
 
@@ -16,9 +16,9 @@ def run():
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
     # Optional parameters via CO environment variables
-    video_path_env = os.environ.get("VIDEO_PATH")
-    start_frame = int(os.environ["START_FRAME"]) if os.environ.get("START_FRAME") else None
-    end_frame = int(os.environ["END_FRAME"]) if os.environ.get("END_FRAME") else None
+    video_path_env = '/root/capsule/data/behavior_716325_2024-05-31_10-31-14/behavior-videos/bottom_camera.avi'
+    start_frame = 0
+    end_frame = 5000
 
     if video_path_env:
         p = Path(video_path_env)
