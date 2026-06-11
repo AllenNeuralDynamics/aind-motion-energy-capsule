@@ -41,7 +41,7 @@ def run():
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
     # Optional parameters via CO environment variables
-    video_path_env = '/root/capsule/data/behavior_716325_2024-05-31_10-31-14/behavior-videos/bottom_camera.avi'
+    video_path_env = '/root/capsule/data/behavior_854151_2026-06-08_09-39-38/behavior-videos/BottomCamera/video.mp4'
     start_frame = 0
     end_frame = 5000
 
