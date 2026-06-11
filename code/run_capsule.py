@@ -8,7 +8,7 @@ import numpy as np
 from aind_motion_energy import compute_motion_energy
 
 DATA_DIR = Path("/root/capsule/data")
-RESULTS_DIR = Path("/results")
+RESULTS_DIR = Path("/root/capsule/results")
 VIDEO_EXTENSIONS = {".mp4", ".avi", ".mkv", ".mov", ".mj2", ".tif", ".tiff"}
 
 
