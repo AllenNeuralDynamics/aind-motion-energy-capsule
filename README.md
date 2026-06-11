@@ -1,3 +1,3 @@
-# aind-capsule-template
+# aind-motion-energy-capsule
 
-Basic structure of a capsule to be customized as needed.
+Runs aind-motion-energy functions on behavior videos.
