@@ -12,5 +12,6 @@ RUN apt-get update \
     && apt-get install -y ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
-# aind-motion-energy pulls PyAV (bundles its own ffmpeg) transitively
-RUN pip install matplotlib git+https://github.com/AllenNeuralDynamics/aind-motion-energy.git@main  # 2026-06-11 pyav
+# aind-motion-energy pulls PyAV (bundles its own ffmpeg) transitively;
+# [viz] extra adds matplotlib for the synced motion-energy video
+RUN pip install "aind-motion-energy[viz] @ git+https://github.com/AllenNeuralDynamics/aind-motion-energy.git@main"  # 2026-06-11 viz
