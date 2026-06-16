@@ -55,6 +55,12 @@ def run():
     )
     parser.add_argument("--start-frame", type=int, default=0)
     parser.add_argument("--end-frame", type=int, default=5000)
+    parser.add_argument(
+        "--visualize",
+        action="store_true",
+        default=False,
+        help="Render a synced MP4 (slow — ~1 min per 500 source frames on CO).",
+    )
     args = parser.parse_args()
 
     start_frame = args.start_frame
@@ -88,13 +94,14 @@ def run():
         with open(RESULTS_DIR / f"{stem}_me_metadata.json", "w") as f:
             json.dump(meta, f, indent=2)
         save_plots(stem, me, me_clean, keyframe_mask, avg_map, meta)
-        render_motion_energy_video(
-            video, me_clean, fps_source=meta["fps"],
-            output_path=RESULTS_DIR / f"{stem}_motion_energy.mp4",
-            raw_trace=me,
-            start_frame=start_frame, end_frame=end_frame,
-            window_seconds=3.0, out_fps=60.0,
-        )
+        if args.visualize:
+            render_motion_energy_video(
+                video, me_clean, fps_source=meta["fps"],
+                output_path=RESULTS_DIR / f"{stem}_motion_energy.mp4",
+                raw_trace=me,
+                start_frame=start_frame, end_frame=end_frame,
+                window_seconds=3.0, out_fps=60.0,
+            )
         print(f"{stem}: {len(me)} diffs | {meta['n_keyframes_masked']} keyframes masked | "
               f"max={me.max():.4f} | mean={me.mean():.4f}")
 
