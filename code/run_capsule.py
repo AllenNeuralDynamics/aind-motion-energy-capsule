@@ -1,6 +1,6 @@
 """top level run script"""
+import argparse
 import json
-import os
 from pathlib import Path
 
 import matplotlib
@@ -45,15 +45,25 @@ def save_plots(stem, me, me_clean, keyframe_mask, avg_map, meta):
 
 
 def run():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--video",
+        type=str,
+        default=None,
+        help="Path to a specific video file (absolute, or relative to /root/capsule/data). "
+             "If omitted, all videos under /root/capsule/data are processed.",
+    )
+    parser.add_argument("--start-frame", type=int, default=0)
+    parser.add_argument("--end-frame", type=int, default=5000)
+    args = parser.parse_args()
+
+    start_frame = args.start_frame
+    end_frame = args.end_frame
+
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Optional parameters via CO environment variables
-    video_path_env = os.environ.get("VIDEO_PATH", "")
-    start_frame = int(os.environ.get("START_FRAME", 0))
-    end_frame = int(os.environ.get("END_FRAME", 0)) or None
-
-    if video_path_env:
-        p = Path(video_path_env)
+    if args.video:
+        p = Path(args.video)
         videos = [DATA_DIR / p if not p.is_absolute() else p]
     else:
         videos = sorted(
@@ -91,3 +101,4 @@ def run():
 
 if __name__ == "__main__":
     run()
+
