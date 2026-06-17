@@ -56,6 +56,11 @@ def run():
     parser.add_argument("--start-frame", type=int, default=0)
     parser.add_argument("--end-frame", type=int, default=5000)
     parser.add_argument(
+        "--roi",
+        type=int, nargs=4, metavar=("X", "Y", "W", "H"), default=None,
+        help="Crop region of interest in pixels: X Y W H (origin top-left).",
+    )
+    parser.add_argument(
         "--visualize",
         action="store_true",
         default=False,
@@ -65,6 +70,7 @@ def run():
 
     start_frame = args.start_frame
     end_frame = args.end_frame
+    roi = tuple(args.roi) if args.roi else None
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -83,7 +89,7 @@ def run():
 
     for video in videos:
         me, keyframe_mask, avg_map, meta = compute_motion_energy(
-            video, start_frame=start_frame, end_frame=end_frame
+            video, roi=roi, start_frame=start_frame, end_frame=end_frame
         )
         me_clean = clean_trace(me, keyframe_mask, method="interpolate")
         stem = video.stem
@@ -98,7 +104,7 @@ def run():
             render_motion_energy_video(
                 video, me_clean, fps_source=meta["fps"],
                 output_path=RESULTS_DIR / f"{stem}_motion_energy.mp4",
-                raw_trace=me,
+                raw_trace=me, roi=roi,
                 start_frame=start_frame, end_frame=end_frame,
                 window_seconds=3.0, out_fps=60.0,
             )
