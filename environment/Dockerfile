@@ -6,7 +6,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 
 RUN conda install -y python=3.11 \
-    && conda clean -ya
+    && conda clean -ya \
+    && pip install jupyterlab  # reinstall for python 3.11 (base image had 3.9)
 
 RUN apt-get update \
     && apt-get install -y ffmpeg \
