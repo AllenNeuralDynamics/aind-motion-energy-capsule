@@ -19,4 +19,4 @@ RUN pip install pynwb  # example notebook: NWB trial alignment
 RUN pip install git+https://github.com/AllenNeuralDynamics/aind-dynamic-foraging-behavior-video-analysis.git@video_alignment  # video_alignment utilities
 
 COPY postInstall /
-RUN /postInstall
+RUN chmod +x /postInstall && /postInstall
