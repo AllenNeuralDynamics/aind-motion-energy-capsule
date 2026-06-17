@@ -6,8 +6,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 
 RUN conda install -y python=3.11 \
-    && conda clean -ya \
-    && pip install jupyterlab  # reinstall for python 3.11 (base image had 3.9)
+    && conda clean -ya
 
 RUN apt-get update \
     && apt-get install -y ffmpeg \
@@ -18,3 +17,6 @@ RUN apt-get update \
 RUN pip install "aind-motion-energy[viz] @ git+https://github.com/AllenNeuralDynamics/aind-motion-energy.git@main"  # 2026-06-11 viz
 RUN pip install pynwb  # example notebook: NWB trial alignment
 RUN pip install git+https://github.com/AllenNeuralDynamics/aind-dynamic-foraging-behavior-video-analysis.git@video_alignment  # video_alignment utilities
+
+COPY postInstall /
+RUN /postInstall
