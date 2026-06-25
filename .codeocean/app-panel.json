@@ -1,0 +1,26 @@
+{
+	"version": 1,
+	"datasets": [
+		{
+			"id": "2d28ccd9-48ab-429e-92ef-7723135ee306",
+			"name": "example session"
+		}
+	],
+	"parameters": [
+		{
+			"id": "yQGs3vNwnvFvu84U",
+			"name": "End frame",
+			"type": "text",
+			"value_type": "string",
+			"default_value": "--end-frame=5000"
+		}
+	],
+	"results": [
+		{
+			"file_name": "video_motion_energy.png"
+		},
+		{
+			"file_name": "video_motion_energy_map.png"
+		}
+	]
+}
