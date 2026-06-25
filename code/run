@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -ex
-python -u run_capsule.py \
-    --video "behavior_854151_2026-06-08_09-39-38/behavior-videos/BottomCamera/video.mp4" \
-    --end-frame 5000 \
-    --roi 100 100 100 100
+# Thin shell over the aind-motion-energy library CLI (installed from the env).
+# Processes every video under /data (full length by default) and writes results
+# to /results. Per-run overrides (--roi, --end-frame, a single --input file, ...)
+# arrive via "$@" from the Code Ocean App Builder / batch launcher — never edit
+# this file to change parameters.
+aind-motion-energy \
+    --input /root/capsule/data \
+    --output /root/capsule/results \
+    --summary-plots \
+    "$@"
