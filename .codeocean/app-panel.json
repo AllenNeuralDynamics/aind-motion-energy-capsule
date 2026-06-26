@@ -1,11 +1,5 @@
 {
 	"version": 1,
-	"datasets": [
-		{
-			"id": "2d28ccd9-48ab-429e-92ef-7723135ee306",
-			"name": "example session"
-		}
-	],
 	"parameters": [
 		{
 			"id": "yQGs3vNwnvFvu84U",
