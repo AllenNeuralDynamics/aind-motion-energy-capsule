@@ -1,0 +1,9 @@
+# NOT a package. Tool configuration only.
+# Do not add a [project] table — this capsule is
+# executed by Code Ocean, never installed.
+
+[tool.ruff]
+line-length = 100
+
+[tool.mypy]
+strict = true

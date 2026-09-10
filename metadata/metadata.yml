@@ -1,0 +1,12 @@
+metadata_version: 1
+name: aind-motion-energy-capsule
+description: |-
+  Code Ocean capsule for the aind-motion-energy pipeline: a thin shell over
+  the aind-motion-energy library CLI that computes motion energy from
+  behavior videos and writes per-video outputs (traces, keyframe masks,
+  summary plots) to /results.
+tags:
+- behavior
+- motion-energy
+authors:
+- name: AIND
