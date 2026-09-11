@@ -15,4 +15,6 @@ aind-motion-energy \
     --input /root/capsule/data \
     --output /root/capsule/results \
     --summary-plots \
+    --end-frame 100 \
     "$@"
+
