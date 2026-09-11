@@ -14,9 +14,9 @@ RUN apt-get update \
 
 # aind-motion-energy pulls PyAV (bundles its own ffmpeg) transitively;
 # [viz] extra adds matplotlib for the synced motion-energy video
-RUN pip install "aind-motion-energy[viz] @ git+https://github.com/AllenNeuralDynamics/aind-motion-energy.git@2e62934523a7b0cc3f7a25a7de474963bfc694df"  # pin: per-camera output keys (multi-camera collision fix, 2026-06-26)
+RUN pip install "aind-motion-energy[viz] @ git+https://github.com/AllenNeuralDynamics/aind-motion-energy.git@v0.2.0"  # pin: tagged release (supersedes the 2e62934 SHA pin)
 RUN pip install pynwb  # example notebook: NWB trial alignment
-RUN pip install git+https://github.com/AllenNeuralDynamics/aind-dynamic-foraging-behavior-video-analysis.git@main  # includes video_alignment utilities
+RUN pip install git+https://github.com/AllenNeuralDynamics/aind-dynamic-foraging-behavior-video-analysis.git@b21eac0b82b29c83fdc18242727e94e59486d804  # includes video_alignment utilities; pin: main HEAD at 2026-09-11 (no tagged release exists)
 
 COPY postInstall /
 RUN /postInstall

@@ -5,6 +5,12 @@ set -ex
 # to /results. Per-run overrides (--roi, --end-frame, a single --input file, ...)
 # arrive via "$@" from the Code Ocean App Builder / batch launcher — never edit
 # this file to change parameters.
+
+# Dependency log (AIND standards): record the resolved environment with the
+# run's outputs. Written first so it survives a failed analysis, when it is
+# most useful. Infrastructure, not a parameter.
+pip list > /root/capsule/results/pip_list.txt
+
 aind-motion-energy \
     --input /root/capsule/data \
     --output /root/capsule/results \
