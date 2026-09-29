@@ -50,7 +50,7 @@ aind-motion-energy --input /root/capsule/data --output /root/capsule/results --s
 ```
 
 `--input`, `--output`, and `--summary-plots` are fixed by this capsule and
-are not meant to change between runs. Every other CLI flag — `--roi`,
+are not meant to change between runs. Every other CLI flag — `--extensions`, `--roi`,
 `--format`, `--start-frame`, `--end-frame`, `--no-normalize`,
 `--no-mask-keyframes`, `--clean-method`, `--visualize`, `--viz-fps`,
 `--viz-window-seconds`, `--viz-stride` — arrives per-run via `"$@"`, supplied
@@ -59,6 +59,12 @@ invocation. **Never edit `code/run` to change parameters** — add or override
 a flag by passing it at run time instead. See the library README's
 [flag reference](https://github.com/AllenNeuralDynamics/aind-motion-energy#flags)
 for what's available.
+
+Older flat-layout sessions store each camera as both `.avi` and `.mp4`
+(e.g. `bottom_camera.avi` + `bottom_camera.mp4`). Since `v0.3.0` the library
+refuses to run when two videos would write the same outputs, so those sessions
+need `--extensions .mp4` (the batch launcher passes it). The same check fails the
+run if an extra attached data asset shares camera names with the session.
 
 ## Related repos
 
