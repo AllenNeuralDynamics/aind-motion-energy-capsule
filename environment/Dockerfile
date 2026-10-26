@@ -16,7 +16,7 @@ RUN apt-get update \
 # [viz] extra adds matplotlib for the synced motion-energy video
 RUN pip install "aind-motion-energy[viz] @ git+https://github.com/AllenNeuralDynamics/aind-motion-energy.git@v0.4.0"  # pin: tagged release (v0.4.0: multi-ROI masks, one NPZ per video)
 RUN pip install pynwb  # example notebook: NWB trial alignment
-RUN pip install git+https://github.com/AllenNeuralDynamics/aind-dynamic-foraging-behavior-video-analysis.git@b21eac0b82b29c83fdc18242727e94e59486d804  # includes video_alignment utilities; pin: main HEAD at 2026-09-11 (no tagged release exists)
+RUN pip install git+https://github.com/AllenNeuralDynamics/aind-dynamic-foraging-behavior-video-analysis.git@v0.4.0  # example notebook: video_timing_qc (corrected frame times) + video_alignment.behavior_time_to_frame_index; pin: tagged release (core install, no extras)
 
 COPY postInstall /
 RUN /postInstall
